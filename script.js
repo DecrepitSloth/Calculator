@@ -11,9 +11,8 @@ const nums = {
     nine: "9"
 };
 
-const ops = {
-    plus: "+",
-    minus: "-",
-    multiply: "*",
-    divide: "/"
-};
+
+let plus = (first, second) => first + second;
+let minus = (first, second) => first - second;
+let multiply = (first, second) => first * second;
+let divide = (first, second) => first / second;
