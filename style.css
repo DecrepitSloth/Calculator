@@ -22,11 +22,12 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: -40px;
+    justify-content: center;
 }
 
 button {
     width: 60px;
     height: 60px;
-    margin: 10px;
+    margin: 15px;
 }
 
