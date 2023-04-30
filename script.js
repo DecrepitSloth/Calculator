@@ -18,14 +18,17 @@ const ops = {
     divide: "/"
 };
 
+// Currently not set up to update from nums
 let firstNum = 0;
 let secondNum = 0;
 
+// remember to add return or equivalent for each function
 let add = (firstNum, secondNum) => firstNum + secondNum;
 let subtract = (firstNum, secondNum) => firstNum - secondNum;
 let multiplication = (firstNum, secondNum) => firstNum * secondNum;
 let division = (firstNum, secondNum) => firstNum / secondNum;
 
+// 0/0 returns NaN. Fix with if statement under division
 function operate(operator) {
     if (operator == "+") {add(firstNum, secondNum);} 
     else if (operator == "-") {subtract(firstNum, secondNum);} 
