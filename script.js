@@ -25,3 +25,11 @@ let add = (firstNum, secondNum) => firstNum + secondNum;
 let subtract = (firstNum, secondNum) => firstNum - secondNum;
 let multiplication = (firstNum, secondNum) => firstNum * secondNum;
 let division = (firstNum, secondNum) => firstNum / secondNum;
+
+function operate(operator) {
+    if (operator == "+") {add(firstNum, secondNum);} 
+    else if (operator == "-") {subtract(firstNum, secondNum);} 
+    else if (operator == "*") {multiplication(firstNum, secondNum);} 
+    else if (operator == "/") {division(firstNum, secondNum);} 
+    else {console.log("Error");}
+}
