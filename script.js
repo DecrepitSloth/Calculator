@@ -37,7 +37,6 @@ function operators(inputOp) {
     document.getElementById("output").innerHTML = display;
     // send input to operator
     op = inputOp;
-    console.log(equationString)
 
     if (firstNum == 0) {
         // take all numbers input and make them firstNum
@@ -82,4 +81,6 @@ function operate(operator) {
     else if (operator == "*") {multiplication(firstNum, secondNum);} 
     else if (operator == "/") {division(firstNum, secondNum);} 
     else {console.log("Error");}
+
+    document.getElementById("output").innerHTML = total;
 }
