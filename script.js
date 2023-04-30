@@ -20,7 +20,6 @@ const ops = {
 
 let display = "";
 
-// compare using className == num.key/ops.key
 function numbers(inputNum) {
     display += inputNum;
     document.getElementById("output").innerHTML = display;
