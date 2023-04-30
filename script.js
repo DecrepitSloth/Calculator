@@ -1,5 +1,4 @@
 const nums = {
-    zero: "0",
     one: "1",
     two: "2",
     three: "3",
@@ -8,7 +7,8 @@ const nums = {
     six: "6",
     seven: "7",
     eight: "8",
-    nine: "9"
+    nine: "9",
+    zero: "0"
 };
 
 const ops = {
@@ -17,6 +17,19 @@ const ops = {
     multiply: "*",
     divide: "/"
 };
+
+let display = "";
+
+// compare using className == num.key/ops.key
+function numbers(inputNum) {
+    display += inputNum;
+    document.getElementById("output").innerHTML = display;
+}
+
+function operators(inputOp) {
+    display += inputOp;
+    document.getElementById("output").innerHTML = display;
+}
 
 // Currently not set up to update from nums
 let firstNum = 0;
