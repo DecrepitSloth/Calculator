@@ -21,7 +21,7 @@ const ops = {
 let equationArray = [];
 let equationString = "";
 let display = "";
-let operator = "";
+let op;
 
 function numbers(inputNum) {
     // send input to display
@@ -36,19 +36,18 @@ function operators(inputOp) {
     display += inputOp;
     document.getElementById("output").innerHTML = display;
     // send input to operator
-    operator = inputOp;
-    console.log(operator)
+    op = inputOp;
+    console.log(equationString)
 
     if (firstNum == 0) {
         // take all numbers input and make them firstNum
         firstNum = parseInt(equationString);
         equationString = "";
-        console.log(firstNum);
-    } else {
+    } else if (firstNum > 0) {
+        console.log("this code is running")
         // take all number inputs after using an operator and put them in secondNum
         secondNum = parseInt(equationString);
         equationString = "";
-        console.log(secondNum);
     }
 }
 
@@ -59,7 +58,7 @@ function clearDisplay() {
     equationString = "";
     firstNum = 0;
     secondNum = 0;
-    operator = "";
+    op = "";
 }
 
 // Currently not set up to update from nums
@@ -68,13 +67,16 @@ let secondNum = 0;
 let total = 0;
 
 // remember to add return or equivalent for each function
-let add = (firstNum, secondNum) => firstNum + secondNum;
-let subtract = (firstNum, secondNum) => firstNum - secondNum;
-let multiplication = (firstNum, secondNum) => firstNum * secondNum;
-let division = (firstNum, secondNum) => firstNum / secondNum;
+let add = (firstNum, secondNum) => total += firstNum + secondNum;
+let subtract = (firstNum, secondNum) => total += firstNum - secondNum;
+let multiplication = (firstNum, secondNum) => total += firstNum * secondNum;
+let division = (firstNum, secondNum) => total += firstNum / secondNum;
 
 // 0/0 returns NaN. Fix with if statement under division
 function operate(operator) {
+    secondNum = parseInt(equationString);
+    equationString = "";
+
     if (operator == "+") {add(firstNum, secondNum);} 
     else if (operator == "-") {subtract(firstNum, secondNum);} 
     else if (operator == "*") {multiplication(firstNum, secondNum);} 
