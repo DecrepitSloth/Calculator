@@ -18,6 +18,9 @@ const ops = {
     divide: "/"
 };
 
+let firstNum = 0;
+let secondNum = 0;
+
 let add = (firstNum, secondNum) => firstNum + secondNum;
 let subtract = (firstNum, secondNum) => firstNum - secondNum;
 let multiplication = (firstNum, secondNum) => firstNum * secondNum;
