@@ -30,6 +30,11 @@ function operators(inputOp) {
     document.getElementById("output").innerHTML = display;
 }
 
+function clearDisplay() {
+    display = "";
+    document.getElementById("output").innerHTML = "";
+}
+
 // Currently not set up to update from nums
 let firstNum = 0;
 let secondNum = 0;
