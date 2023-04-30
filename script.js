@@ -11,7 +11,6 @@ const nums = {
     nine: "9"
 };
 
-<<<<<<< HEAD
 const ops = {
     plus: "+",
     minus: "-",
@@ -26,10 +25,3 @@ let add = (firstNum, secondNum) => firstNum + secondNum;
 let subtract = (firstNum, secondNum) => firstNum - secondNum;
 let multiplication = (firstNum, secondNum) => firstNum * secondNum;
 let division = (firstNum, secondNum) => firstNum / secondNum;
-=======
-
-let plus = (first, second) => first + second;
-let minus = (first, second) => first - second;
-let multiply = (first, second) => first * second;
-let divide = (first, second) => first / second;
->>>>>>> d0bd9bf1b0bb0332bdc578d38b876f8ec47ff70d
