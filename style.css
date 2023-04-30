@@ -8,7 +8,7 @@
     background: skyblue;
 }
 
-.output {
+#output {
     border: 2px solid black;
     width: 300px;
     height: 50px;
