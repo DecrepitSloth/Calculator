@@ -18,12 +18,17 @@ const ops = {
     divide: "/"
 };
 
-let equationArray = [];
 let equationString = "";
 let display = "";
 let op;
 
 function numbers(inputNum) {
+    if (firstNum !== 0 && secondNum !== 0) {
+        total = firstNum + secondNum;
+        firstNum = total;
+        total = 0;
+    }
+
     // send input to display
     display += inputNum;
     document.getElementById("output").innerHTML = display;
@@ -43,7 +48,6 @@ function operators(inputOp) {
         firstNum = parseInt(equationString);
         equationString = "";
     } else if (firstNum > 0) {
-        console.log("this code is running")
         // take all number inputs after using an operator and put them in secondNum
         secondNum = parseInt(equationString);
         equationString = "";
@@ -53,7 +57,6 @@ function operators(inputOp) {
 function clearDisplay() {
     display = "";
     document.getElementById("output").innerHTML = "";
-    equationArray = [];
     equationString = "";
     firstNum = 0;
     secondNum = 0;
@@ -73,8 +76,8 @@ let division = (firstNum, secondNum) => total += firstNum / secondNum;
 
 // 0/0 returns NaN. Fix with if statement under division
 function operate(operator) {
-    secondNum = parseInt(equationString);
-    equationString = "";
+        secondNum = parseInt(equationString);
+        equationString = "";
 
     if (operator == "+") {add(firstNum, secondNum);} 
     else if (operator == "-") {subtract(firstNum, secondNum);} 
@@ -82,5 +85,8 @@ function operate(operator) {
     else if (operator == "/") {division(firstNum, secondNum);} 
     else {console.log("Error");}
 
-    document.getElementById("output").innerHTML = total;
+    let totalDisplay = total;
+    total = 0;
+
+    document.getElementById("output").innerHTML = totalDisplay;
 }
