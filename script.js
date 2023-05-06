@@ -21,11 +21,17 @@ const ops = {
 let equationString = "";
 let display = "";
 let op;
+let previousOp;
 
 function numbers(inputNum) {
     if (firstNum !== 0 && secondNum !== 0) {
-        total = firstNum + secondNum;
+        if (previousOp == "+") {add(firstNum, secondNum);} 
+        else if (previousOp == "-") {subtract(firstNum, secondNum);} 
+        else if (previousOp == "*") {multiplication(firstNum, secondNum);} 
+        else if (previousOp == "/") {division(firstNum, secondNum);} 
+        else {console.log("Error");}
         firstNum = total;
+        secondNum = 0;
         total = 0;
     }
 
@@ -37,6 +43,7 @@ function numbers(inputNum) {
 }
 
 function operators(inputOp) {
+    previousOp = op
     // send input to display
     display += inputOp;
     document.getElementById("output").innerHTML = display;
@@ -63,12 +70,10 @@ function clearDisplay() {
     op = "";
 }
 
-// Currently not set up to update from nums
 let firstNum = 0;
 let secondNum = 0;
 let total = 0;
 
-// remember to add return or equivalent for each function
 let add = (firstNum, secondNum) => total += firstNum + secondNum;
 let subtract = (firstNum, secondNum) => total += firstNum - secondNum;
 let multiplication = (firstNum, secondNum) => total += firstNum * secondNum;
@@ -87,6 +92,5 @@ function operate(operator) {
 
     let totalDisplay = total;
     total = 0;
-
     document.getElementById("output").innerHTML = totalDisplay;
 }
