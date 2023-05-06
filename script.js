@@ -92,5 +92,6 @@ function operate(operator) {
 
     let totalDisplay = total;
     total = 0;
+    clearDisplay()
     document.getElementById("output").innerHTML = totalDisplay;
 }
