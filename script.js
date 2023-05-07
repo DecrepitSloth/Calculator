@@ -33,7 +33,9 @@ function numbers(inputNum) {
         firstNum = total;
         secondNum = 0;
         total = 0;
-    }
+    } 
+    
+    if (inputNum == 0 && op == "/") {divideZero = 1;}
 
     // send input to display
     display += inputNum;
@@ -68,11 +70,13 @@ function clearDisplay() {
     firstNum = 0;
     secondNum = 0;
     op = "";
+    divideZero = 0;
 }
 
 let firstNum = 0;
 let secondNum = 0;
 let total = 0;
+let divideZero = 0;
 
 let add = (firstNum, secondNum) => total += firstNum + secondNum;
 let subtract = (firstNum, secondNum) => total += firstNum - secondNum;
@@ -92,6 +96,9 @@ function operate(operator) {
 
     let totalDisplay = total;
     total = 0;
+
+    if (divideZero == 1) {totalDisplay = "Can't Divide by 0"};
+    
     clearDisplay()
     document.getElementById("output").innerHTML = totalDisplay;
 }
