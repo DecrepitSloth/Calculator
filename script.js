@@ -8,7 +8,8 @@ const nums = {
     seven: "7",
     eight: "8",
     nine: "9",
-    zero: "0"
+    zero: "0",
+    decimal: "."
 };
 
 const ops = {
@@ -54,11 +55,11 @@ function operators(inputOp) {
 
     if (firstNum == 0) {
         // take all numbers input and make them firstNum
-        firstNum = parseInt(equationString);
+        firstNum = parseFloat(equationString);
         equationString = "";
     } else if (firstNum > 0) {
         // take all number inputs after using an operator and put them in secondNum
-        secondNum = parseInt(equationString);
+        secondNum = parseFloat(equationString);
         equationString = "";
     }
 }
@@ -85,7 +86,7 @@ let division = (firstNum, secondNum) => total += firstNum / secondNum;
 
 // 0/0 returns NaN. Fix with if statement under division
 function operate(operator) {
-        secondNum = parseInt(equationString);
+        secondNum = parseFloat(equationString);
         equationString = "";
 
     if (operator == "+") {add(firstNum, secondNum);} 
