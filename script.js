@@ -31,12 +31,14 @@ function numbers(inputNum) {
         else if (previousOp == "*") {multiplication(firstNum, secondNum);} 
         else if (previousOp == "/") {division(firstNum, secondNum);} 
         else {console.log("Error");}
+        
         firstNum = total;
         secondNum = 0;
         total = 0;
     } 
     
     if (inputNum == 0 && op == "/") {divideZero = 1;}
+    if (inputNum == "." && equationString.includes(".")) {return}
 
     // send input to display
     display += inputNum;
