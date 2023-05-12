@@ -31,7 +31,7 @@ function numbers(inputNum) {
         else if (previousOp == "*") {multiplication(firstNum, secondNum);} 
         else if (previousOp == "/") {division(firstNum, secondNum);} 
         else {console.log("Error");}
-        
+
         firstNum = total;
         secondNum = 0;
         total = 0;
@@ -39,6 +39,7 @@ function numbers(inputNum) {
     
     if (inputNum == 0 && op == "/") {divideZero = 1;}
     if (inputNum == "." && equationString.includes(".")) {return}
+    if (inputNum == ".") {decimalCheck = 1}
 
     // send input to display
     display += inputNum;
@@ -80,6 +81,7 @@ let firstNum = 0;
 let secondNum = 0;
 let total = 0;
 let divideZero = 0;
+let decimalCheck = 0;
 
 let add = (firstNum, secondNum) => total += firstNum + secondNum;
 let subtract = (firstNum, secondNum) => total += firstNum - secondNum;
@@ -97,7 +99,10 @@ function operate(operator) {
     else if (operator == "/") {division(firstNum, secondNum);} 
     else {console.log("Error");}
 
-    let totalDisplay = total;
+    if (decimalCheck == 1) {
+        totalDisplay = total.toFixed(3)
+        decimalCheck = 0;
+    } else {totalDisplay = total;}
     total = 0;
 
     if (divideZero == 1) {totalDisplay = "Can't Divide by 0"};
