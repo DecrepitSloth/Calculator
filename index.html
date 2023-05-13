@@ -19,12 +19,12 @@
             <!-- needs to behave like a number -->
             <button class="decimal" onclick="numbers(nums.decimal)">.</button>
 
-            <!-- equals and clear -->
+            <!-- equals, clear, backspace -->
             <button class="equals" onclick="operate(op)">=</button>
             <button class="clear" onclick="clearDisplay()">AC</button>
+            <button class="backspace" onclick="backspace()">CE</button>
 
             <!-- numbers -->
-            <button class="zero" onclick="numbers(nums.zero)">0</button>
             <div class="number">
                 <button class="one" onclick="numbers(nums.one)">1</button>
                 <button class="two" onclick="numbers(nums.two)">2</button>
@@ -35,6 +35,7 @@
                 <button class="seven" onclick="numbers(nums.seven)">7</button>
                 <button class="eight" onclick="numbers(nums.eight)">8</button>
                 <button class="nine" onclick="numbers(nums.nine)">9</button>
+                <button class="zero" onclick="numbers(nums.zero)">0</button>
             </div>
         </div>
     </div>
