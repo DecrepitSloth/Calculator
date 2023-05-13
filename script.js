@@ -60,11 +60,11 @@ function operators(inputOp) {
         // take all numbers input and make them firstNum
         firstNum = parseFloat(equationString);
         equationString = "";
-    } else if (firstNum > 0) {
+    } else if (firstNum > 0 && equationString !== "") {
         // take all number inputs after using an operator and put them in secondNum
         secondNum = parseFloat(equationString);
         equationString = "";
-    }
+    } 
 }
 
 function clearDisplay() {
@@ -88,7 +88,6 @@ let subtract = (firstNum, secondNum) => total += firstNum - secondNum;
 let multiplication = (firstNum, secondNum) => total += firstNum * secondNum;
 let division = (firstNum, secondNum) => total += firstNum / secondNum;
 
-// 0/0 returns NaN. Fix with if statement under division
 function operate(operator) {
         secondNum = parseFloat(equationString);
         equationString = "";
@@ -110,3 +109,19 @@ function operate(operator) {
     clearDisplay()
     document.getElementById("output").innerHTML = totalDisplay;
 }
+
+function backspace() {
+    let lastString = display.slice(display.length - 1, display.length)
+    let remainder = display.slice(0, display.length - 1);
+    // update display
+    display = remainder;
+    document.getElementById("output").innerHTML = display
+    
+    // change behavior based on last string
+    if (Object.values(nums).includes(lastString)) {
+        let newES = equationString.slice(0, equationString.length -1)
+        equationString = newES; 
+    } else if (Object.values(ops).includes(lastString)) {
+        op = "";
+        secondNum = 0;
+    }};
