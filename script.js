@@ -76,6 +76,7 @@ function clearDisplay() {
     secondNum = 0;
     op = "";
     divideZero = 0;
+    backCheck = 0;
 }
 
 let firstNum = 0;
@@ -90,14 +91,18 @@ let multiplication = (firstNum, secondNum) => total += firstNum * secondNum;
 let division = (firstNum, secondNum) => total += firstNum / secondNum;
 
 function operate(operator) {
+    if (backCheck == 1) {total = 0};
+    if (equationString == "" && backCheck == 1) {
+        total = firstNum
+    } else {
         secondNum = parseFloat(equationString);
         equationString = "";
-
-    if (operator == "+") {add(firstNum, secondNum);} 
-    else if (operator == "-") {subtract(firstNum, secondNum);} 
-    else if (operator == "*") {multiplication(firstNum, secondNum);} 
-    else if (operator == "/") {division(firstNum, secondNum);} 
-    else {console.log("Error");}
+        if (operator == "+") {add(firstNum, secondNum);} 
+        else if (operator == "-") {subtract(firstNum, secondNum);} 
+        else if (operator == "*") {multiplication(firstNum, secondNum);} 
+        else if (operator == "/") {division(firstNum, secondNum);} 
+        else {console.log("Error");}
+    }
 
     if (decimalCheck == 1) {
         totalDisplay = total.toFixed(3)
@@ -113,8 +118,10 @@ function operate(operator) {
 
 opArray = []
 numArray = []
+backCheck = 0;
 
 function backspace() {
+    backCheck = 1;
     let lastString = display.slice(display.length - 1, display.length)
     let remainder = display.slice(0, display.length - 1);
     // update display
@@ -147,16 +154,18 @@ function backspace() {
 function recalculate() {
     total = 0;
     for (i = 0; i < opArray.length; i++) {
-        if (opArray[i] == "+" && numArray[i + 1] !== undefined) {add(numArray[i], numArray[i + 1]);
-        console.log("Running")} 
+        if (opArray[i] == "+" && numArray[i + 1] !== undefined) {add(numArray[i], numArray[i + 1]);} 
         else if (opArray[i] == "-" && numArray[i + 1] !== undefined) {subtract(numArray[i], numArray[i + 1]);} 
         else if (opArray[i] == "*" && numArray[i + 1] !== undefined) {multiplication(numArray[i], numArray[i + 1]);} 
         else if (opArray[i] == "/" && numArray[i + 1] !== undefined) {division(numArray[i], numArray[i + 1]);} 
-        else {console.log("Running Total")
+        else {
+            console.log(opArray)
+            console.log(numArray)
             op = opArray.pop()
             firstNum = total;
             total = 0;
-        }
-    }
-}
+        }}
 
+
+        if (numArray.length == 1) {firstNum = parseFloat(display[0])}  
+    }
