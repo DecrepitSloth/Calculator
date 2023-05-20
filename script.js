@@ -55,7 +55,9 @@ function operators(inputOp) {
     document.getElementById("output").innerHTML = display;
     // send input to operator
     op = inputOp;
-    if (firstNum == 0) {
+    if (firstNum == 0 && equationString == "") {
+        firstNum = total
+    } else if (firstNum == 0) {
         // take all numbers input and make them firstNum
         firstNum = parseFloat(equationString);
         equationString = "";
