@@ -52,6 +52,7 @@ function numbers(inputNum) {
         numArray.push(parseFloat(equationString))
         recalculate();
         backCheck = 0;
+        firstNum = total;
     } else {
         equationString += inputNum;
     };
