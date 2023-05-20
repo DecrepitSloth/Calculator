@@ -45,7 +45,16 @@ function numbers(inputNum) {
     display += inputNum;
     document.getElementById("output").innerHTML = display;
     // send input to equationString
-    equationString += inputNum;
+    if (Object.values(nums).includes(display.slice(display.length - 1, display.length)) && backCheck == 1) {
+        lastOp = display.lastIndexOf("+" || "-" || "/" || "*")
+        equationString += display.slice(lastOp + 1, display.length)
+        numArray.splice(numArray.length - 1, numArray.length);
+        numArray.push(parseFloat(equationString))
+        recalculate();
+        backCheck = 0;
+    } else {
+        equationString += inputNum;
+    };
 }
 
 function operators(inputOp) {
