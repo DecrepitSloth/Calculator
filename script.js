@@ -46,7 +46,6 @@ function numbers(inputNum) {
     document.getElementById("output").innerHTML = display;
     // send input to equationString
     equationString += inputNum;
-    console.log(total);
 }
 
 function operators(inputOp) {
@@ -56,7 +55,6 @@ function operators(inputOp) {
     document.getElementById("output").innerHTML = display;
     // send input to operator
     op = inputOp;
-
     if (firstNum == 0) {
         // take all numbers input and make them firstNum
         firstNum = parseFloat(equationString);
@@ -77,6 +75,7 @@ function clearDisplay() {
     op = "";
     divideZero = 0;
     backCheck = 0;
+    currentTotal = 0;
 }
 
 let firstNum = 0;
@@ -134,8 +133,7 @@ function backspace() {
         equationString = newES; 
     } else if (Object.values(ops).includes(lastString)) {
         op = "";
-        secondNum = 0;
-    }
+        secondNum = 0;}
 
     numArray = []
     opArray = []
@@ -144,28 +142,37 @@ function backspace() {
         if ((i % 2) == 0) {
             let displayNumber = parseFloat(display[i]);
             numArray.push(displayNumber)
-        } 
-        else {opArray.push(display[i])}
-    }
-
-    recalculate()
-};
+        } else {opArray.push(display[i])}}
+  
+    if (opArray.includes(lastString)) {
+        return
+    } else {
+        recalculate()}};
 
 function recalculate() {
     total = 0;
+    firstNum = 0;
+    let currentTotal = 0;
     for (i = 0; i < opArray.length; i++) {
-        if (opArray[i] == "+" && numArray[i + 1] !== undefined) {add(numArray[i], numArray[i + 1]);} 
-        else if (opArray[i] == "-" && numArray[i + 1] !== undefined) {subtract(numArray[i], numArray[i + 1]);} 
-        else if (opArray[i] == "*" && numArray[i + 1] !== undefined) {multiplication(numArray[i], numArray[i + 1]);} 
-        else if (opArray[i] == "/" && numArray[i + 1] !== undefined) {division(numArray[i], numArray[i + 1]);} 
+        if (i == 0) {currentTotal = numArray[i];}
+        total = 0;
+        if (opArray[i] == "+" && numArray[i + 1] !== undefined) {
+            add(currentTotal, numArray[i + 1])
+            currentTotal = total;} 
+        else if (opArray[i] == "-" && numArray[i + 1] !== undefined) {
+            subtract(currentTotal, numArray[i + 1])   
+            currentTotal = total;} 
+        else if (opArray[i] == "*" && numArray[i + 1] !== undefined) {
+            multiplication(currentTotal, numArray[i + 1])
+            currentTotal = total;} 
+        else if (opArray[i] == "/" && numArray[i + 1] !== undefined) {
+            division(currentTotal, numArray[i + 1])
+            currentTotal = total;} 
         else {
-            console.log(opArray)
-            console.log(numArray)
             op = opArray.pop()
-            firstNum = total;
+            firstNum = currentTotal;
             total = 0;
         }}
-
 
         if (numArray.length == 1) {firstNum = parseFloat(display[0])}  
     }
