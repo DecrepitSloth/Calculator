@@ -44,9 +44,13 @@ function numbers(inputNum) {
     // send input to display
     display += inputNum;
     document.getElementById("output").innerHTML = display;
+    lastOp = display.lastIndexOf("+" || "-" || "/" || "*")
+    let currentNums = display.slice(lastOp + 1, display.length)
+
+    console.log(backCheck)
+
     // send input to equationString
-    if (Object.values(nums).includes(display.slice(display.length - 1, display.length)) && backCheck == 1) {
-        lastOp = display.lastIndexOf("+" || "-" || "/" || "*")
+    if (currentNums.length > 1 && backCheck == 1 && equationString == "") {
         equationString += display.slice(lastOp + 1, display.length)
         numArray.splice(numArray.length - 1, numArray.length);
         numArray.push(parseFloat(equationString))
