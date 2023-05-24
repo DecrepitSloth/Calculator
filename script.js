@@ -47,8 +47,6 @@ function numbers(inputNum) {
     lastOp = display.lastIndexOf("+" || "-" || "/" || "*")
     let currentNums = display.slice(lastOp + 1, display.length)
 
-    console.log(backCheck)
-
     // send input to equationString
     if (currentNums.length > 1 && backCheck == 1 && equationString == "") {
         equationString += display.slice(lastOp + 1, display.length)
