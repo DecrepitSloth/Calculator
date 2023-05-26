@@ -126,6 +126,10 @@ function operate(operator) {
     if (divideZero == 1) {totalDisplay = "Can't Divide by 0"};
     
     clearDisplay()
+    for (i = totalDisplay.length; i > 0; i--) {
+        if (totalDisplay[i] == "0") {
+            totalDisplay = totalDisplay.slice(0, i)
+        }};
     document.getElementById("output").innerHTML = totalDisplay;
 }
 
