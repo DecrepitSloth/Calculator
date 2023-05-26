@@ -123,13 +123,14 @@ function operate(operator) {
     } else {totalDisplay = total;}
     total = 0;
 
-    if (divideZero == 1) {totalDisplay = "Can't Divide by 0"};
-    
-    clearDisplay()
     for (i = totalDisplay.length; i > 0; i--) {
         if (totalDisplay[i] == "0") {
             totalDisplay = totalDisplay.slice(0, i)
         }};
+
+    if (divideZero == 1) {totalDisplay = "Can't Divide by 0"};
+    
+    clearDisplay()
     document.getElementById("output").innerHTML = totalDisplay;
 }
 
