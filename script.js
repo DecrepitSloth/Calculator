@@ -105,8 +105,11 @@ let division = (firstNum, secondNum) => total += firstNum / secondNum;
 
 function operate(operator) {
     if (backCheck == 1) {total = 0};
-    if (equationString == "" && backCheck == 1) {
+    if (equationString == "" && backCheck == 1 && numArray.length > 2) {
+        total = 0
         total = firstNum
+    } else if (equationString == "" && backCheck == 1) {
+        total = currentTotal
     } else {
         secondNum = parseFloat(equationString);
         equationString = "";
@@ -168,10 +171,13 @@ function backspace() {
     } else {
         recalculate()}};
 
+let currentTotal = 0;
+
 function recalculate() {
     total = 0;
     firstNum = 0;
-    let currentTotal = 0;
+    if (display.includes("/0") == false) {divideZero = 0}
+
     for (i = 0; i < opArray.length; i++) {
         if (i == 0) {currentTotal = numArray[i];}
         total = 0;
@@ -193,5 +199,5 @@ function recalculate() {
             total = 0;
         }}
 
-        if (numArray.length == 1) {firstNum = parseFloat(display[0])}  
-    }
+            if (numArray.length == 1) {firstNum = parseFloat(display[0])}  
+        }
